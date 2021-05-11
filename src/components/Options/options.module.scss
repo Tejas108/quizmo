@@ -1,0 +1,17 @@
+.optionsWrap {
+    margin: 0 auto;
+    text-align: center;
+    label {
+        color: #4d6466;
+        font-weight: bold;
+    }
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px; 
+    }
+    .option {
+        flex-grow: 1;
+        margin: 0 5px;
+    }
+}

@@ -29,7 +29,7 @@ const Question = ({ question, incorrect, correct, count }) => {
         }
     }
     return(
-        <li className={styles.question}>
+        <div className={styles.question}>
             <Box w="100%" borderWidth="1px" borderRadius="lg" mb="md" p="3" className={styles.box}>
                 <h2><span>{renderHTML(question)}</span></h2>
                 <ul className={styles.buttonList}>
@@ -47,14 +47,14 @@ const Question = ({ question, incorrect, correct, count }) => {
                                             }
                                         }>{renderHTML(answer)}
                             </Button>
-                            </li>
+                        </li>
                     ))
                     }
                     <li>{isCorrect && <p className={styles.correctAnswer}><span>Correct!</span></p>}
                         {isCorrect == false && <p className={styles.incorrectAnswer}>Sorry, the correct answer is <span>{renderHTML(correct)}</span></p>}</li>
                 </ul>
             </Box>
-        </li>
+        </div>
     )
 }
 Question.propTypes = {

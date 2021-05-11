@@ -7,7 +7,8 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import Options from '../../components/Options/Options';
 import Score from '../../components/Score/Score';
-import { Spinner } from "@chakra-ui/react"
+import { Fade, Spinner } from "@chakra-ui/react";
+import FadeIn from 'react-fade-in';
 
 class Main extends Component {
 
@@ -121,7 +122,7 @@ class Main extends Component {
         <div className={styles.mainWrap}>
             <Header />
             <main className={this.state.showScore ? styles.hideMe :  styles.showMe}>
-            <ul>
+            <FadeIn delay={400}>
             {   this.state.done === false &&
                 this.state.questions.map(({question, incorrect_answers, correct_answer}) => (
 
@@ -134,7 +135,7 @@ class Main extends Component {
                     />
                 ))
             }
-            </ul>
+            </FadeIn>
             </main>
             {   this.state.showScore === true &&
                 <main>

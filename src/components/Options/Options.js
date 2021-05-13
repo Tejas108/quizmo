@@ -31,7 +31,7 @@ const Options = ({qty,dif,handlecat}) => {
             <div className={styles.option}>
                 <label htmlFor="whichCat">
                     <span>Category</span><br/>
-                    <Select variant="outline" size="lg" name="whichCat" id="whichCat" onChange={(e) => handlecat(e.target.value)}>
+                    <Select variant="outline" size="lg" name="whichCat" id="whichCat" onChange={(e) => handlecat(e.target.value, e.target.options[e.target.selectedIndex].text)}>
                         <option value="">Select</option>
                         <option value="12">Music</option>
                         <option value="11">Films</option>

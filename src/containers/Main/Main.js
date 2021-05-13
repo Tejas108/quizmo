@@ -7,7 +7,7 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import Options from '../../components/Options/Options';
 import Score from '../../components/Score/Score';
-import { Fade, Spinner } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 import FadeIn from 'react-fade-in';
 
 class Main extends Component {
@@ -60,7 +60,7 @@ class Main extends Component {
     handleCount = () => {
         let count = localStorage.getItem('count');
         localStorage.setItem('count', ++count);
-        if(localStorage.getItem('count') == this.state.qty){
+        if(localStorage.getItem('count') === this.state.qty){
             setTimeout(() => {
                this.setState({
                 finalScore: localStorage.getItem('score'),
@@ -90,29 +90,12 @@ class Main extends Component {
         });
         this.handleApi();
     }
-    handleCat = (catId) => {
-       this.handleApi(catId);
-        let title = "";
-        switch(catId){
-            case 12:
-                title = 'Music';
-                break;
-            case 11:
-                title = 'Films';
-                break;
-            case 14:
-                title = 'TV';
-                break;
-            case 23:
-                title = 'History';
-                break;
-                default:
-        }
-        console.log(title);
+    handleCat = (catId,catTitle) => {
         this.setState({
             catId,
-            catTitle: title
+            catTitle
         });
+        this.handleApi(catId);
     }
     render(){
         if(this.state.isLoading) {
@@ -120,7 +103,7 @@ class Main extends Component {
         } else {            
         return(
         <div className={styles.mainWrap}>
-            <Header />
+            <Header categoryTitle={this.state.catTitle}/>
             <main className={this.state.showScore ? styles.hideMe :  styles.showMe}>
             <FadeIn delay={400}>
             {   this.state.done === false &&
